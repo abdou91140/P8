@@ -60,6 +60,7 @@ describe('controller', function () {
 
 	it('should show entries on start-up', function () {
 		// TODO: write test
+	// vérification du visuel au démarage de l'application.
 		var todo = {};
 		setUpModel([todo]);
 

@@ -180,6 +180,11 @@ describe('controller', function () {
 	describe('toggle all', function () {
 		it('should toggle all todos to completed', function () {
 			// TODO: write test
+			var todo = {title: 'my todo', completed: false};
+			setUpModel([todo]);	
+			subject.setView('#/');
+			expect(view.render).toHaveBeenCalledWith('updateElementCount', 1);
+	
 		});
 
 		it('should update the view', function () {

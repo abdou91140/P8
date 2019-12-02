@@ -103,6 +103,13 @@ describe('controller', function () {
 
 		it('should show completed entries', function () {
 			// TODO: write test
+					// vérification du visuel d'un item complété .
+					var todo = {title: 'my todo'};
+					setUpModel([todo]);
+		
+					subject.setView('#/completed');
+		
+					expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
 		});
 	});
 

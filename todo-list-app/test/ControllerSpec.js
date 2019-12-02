@@ -92,7 +92,7 @@ describe('controller', function () {
 		it('should show active entries', function () {
 			// TODO: write test
 			// vérification du visuel d'un item active .
-			var todo = {title: 'my todo'};
+			var todo = {title: 'my todo',completed: false};
 			setUpModel([todo]);
 
 			subject.setView('#/active');
@@ -104,7 +104,7 @@ describe('controller', function () {
 		it('should show completed entries', function () {
 			// TODO: write test
 					// vérification du visuel d'un item complété .
-					var todo = {title: 'my todo'};
+					var todo = {title: 'my todo', completed: true};
 					setUpModel([todo]);
 		
 					subject.setView('#/completed');
@@ -157,10 +157,18 @@ describe('controller', function () {
 
 	it('should highlight "All" filter by default', function () {
 		// TODO: write test
+		var todo = {};
+		setUpModel([todo]);
+
+		subject.setView('#/');
+
+		expect(view.render).toHaveBeenCalledWith('setFilter', '');
+
 	});
 
 	it('should highlight "Active" filter when switching to active view', function () {
 		// TODO: write test
+		
 	});
 
 	describe('toggle all', function () {

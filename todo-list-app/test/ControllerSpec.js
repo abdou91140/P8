@@ -91,6 +91,14 @@ describe('controller', function () {
 
 		it('should show active entries', function () {
 			// TODO: write test
+			// vérification du visuel d'un item active .
+			var todo = {title: 'my todo'};
+			setUpModel([todo]);
+
+			subject.setView('#/active');
+
+			expect(view.render).toHaveBeenCalledWith('showEntries', [todo]);
+
 		});
 
 		it('should show completed entries', function () {

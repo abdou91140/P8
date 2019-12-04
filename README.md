@@ -1,1 +1,1 @@
-Projet tdodo ajout de tests avec Jasmin
+Ajout de tests avec Jasmin sur le projet todos.

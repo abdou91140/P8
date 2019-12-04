@@ -181,24 +181,36 @@ describe("controller", function() {
   describe("toggle all", function() {
     it("should toggle all todos to completed", function() {
       // TODO: write test
-	  var todos = [{id: 21, title: 'my todo', completed: false},
-	  {id: 42, title: 'another todo', completed: false}
-	  ]
-setUpModel(todos);
+      var todos = [
+        { id: 21, title: "my todo", completed: false },
+        { id: 42, title: "another todo", completed: false }
+      ];
+      setUpModel(todos);
 
-subject.setView('');
+      subject.setView("");
 
-view.trigger('toggleAll', {completed: true});
+      view.trigger("toggleAll", { completed: true });
 
-expect(model.update).toHaveBeenCalledWith(21, {completed: true}, jasmine.any(Function)); // FIXME: A quoi correspond jasmine.any(Function) ?
-expect(model.update).toHaveBeenCalledWith(42, {completed: true}, jasmine.any(Function));
-	});
+      expect(model.update).toHaveBeenCalledWith(
+        21,
+        { completed: true },
+        jasmine.any(Function)
+      ); // FIXME: A quoi correspond jasmine.any(Function) ?
+      expect(model.update).toHaveBeenCalledWith(
+        42,
+        { completed: true },
+        jasmine.any(Function)
+      );
+    });
 
     it("should update the view", function() {
       // TODO: write test
       var todo = { title: "my todo", completed: false };
+
       setUpModel([todo]);
+
       subject.setView("#/");
+
       expect(view.render).toHaveBeenCalledWith("updateElementCount", 1);
     });
   });
@@ -206,6 +218,16 @@ expect(model.update).toHaveBeenCalledWith(42, {completed: true}, jasmine.any(Fun
   describe("new todo", function() {
     it("should add a new todo to the model", function() {
       // TODO: write test
+      setUpModel([]);
+
+      subject.setView("");
+
+      view.trigger("newTodo", "a new todo");
+
+      expect(model.create).toHaveBeenCalledWith(
+        "a new todo",
+        jasmine.any(Function)
+      );
     });
 
     it("should add a new todo to the view", function() {

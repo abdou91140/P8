@@ -101,16 +101,15 @@
       callback.call(this, todos);
     } else {
       // Assign an ID
-      console.log([newId], [id]);
-      updateData.id = parseInt(newId);
+      updateData.id = newId;
       todos.push(updateData);
       localStorage[this._dbName] = JSON.stringify(data);
       callback.call(this, [updateData]);
     }
-	};
-	
+  };
+
   /**
-   * @param {number} id An optional param to enter an ID of an item to update
+   * @param {number} newId An optional param to enter an ID of an item to update
    */
   Store.prototype.createId = function(newId) {
     var newId = "";

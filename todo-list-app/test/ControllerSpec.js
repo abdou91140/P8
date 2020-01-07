@@ -195,7 +195,7 @@ describe("controller", function() {
         21,
         { completed: true },
         jasmine.any(Function)
-      ); // FIXME: A quoi correspond jasmine.any(Function) ?
+      ); 
       expect(model.update).toHaveBeenCalledWith(
         42,
         { completed: true },

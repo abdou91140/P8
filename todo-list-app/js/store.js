@@ -84,57 +84,37 @@
 
     callback = callback || function() {};
 
-    		// Generate an ID
-        var newId = ""; 
-        var charset = "0123456789";
-  
-          for (var i = 0; i < 6; i++) {
-           newId += charset.charAt(Math.floor(Math.random() * charset.length));
-      }
-  
-      // If an ID was actually given, find the item and update each property
-      if (id) {
-        for (var i = 0; i < todos.length; i++) {
-          if (todos[i].id === id) {
-            for (var key in updateData) {
-              todos[i][key] = updateData[key];
-            }
-            break;
-          }
-        }
-  
-        localStorage[this._dbName] = JSON.stringify(data);
-        callback.call(this, todos);
-      } else {
-        // Assign an ID 
-        updateData.id = Date.now(); // Return the number of milliseconds since 1970/01/01 at 00:00
-        console.log(updateData.id);
-        
-        todos.push(updateData);
-        localStorage[this._dbName] = JSON.stringify(data);
-        callback.call(this, [updateData]);
-      }
+    // Generate an ID
 
-  };
-
- 
- /* 
-   * @param {number} newId An optional param to enter an ID of an item to update
-  
-  Store.prototype.createId = function(newId) {
-    var newId = "";
-    var charset = "0123456789";
-
+    let charset = "0123456789";
+    let newId = "";
     for (var i = 0; i < 6; i++) {
-      newId +=
-        charset.charAt(Math.floor(Math.random() * charset.length)) + Date.now(); // Return the number of milliseconds since 1970/01/01 at 00:00
+      newId += charset.charAt(Math.floor(Math.random() * charset.length));
     }
-    return newId;
+
+    // If an ID was actually given, find the item and update each property
+    if (id) {
+      for (var i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+          for (var key in updateData) {
+            todos[i][key] = updateData[key];
+          }
+          break;
+        }
+      }
+
+      localStorage[this._dbName] = JSON.stringify(data);
+      callback.call(this, todos);
+    } else {
+      // Assign an ID
+      updateData.id = Date.now(); // Return the number of milliseconds since 1970/01/01 at 00:00
+      todos.push(updateData);
+      localStorage[this._dbName] = JSON.stringify(data);
+      callback.call(this, [updateData]);
+    }
   };
- */
+
   /**
-   * Will remove an item from the Store based on its ID
-   *
    * @param {number} id The ID of the item you want to remove
    * @param {function} callback The callback to fire after saving
    */
@@ -144,9 +124,9 @@
 
     for (var i = 0; i < todos.length; i++) {
       if (todos[i].id == id) {
-      todos.splice(i, 1);
+        todos.splice(i, 1);
       }
-    } 
+    }
 
     localStorage[this._dbName] = JSON.stringify(data);
     callback.call(this, todos);

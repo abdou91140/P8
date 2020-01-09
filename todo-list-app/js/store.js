@@ -83,34 +83,44 @@
     var todos = data.todos;
 
     callback = callback || function() {};
-    // Generate an ID
-    let newId = this.createId(id);
 
-    // If an ID was actually given, find the item and update each property
-    if (id) {
-      for (var i = 0; i < todos.length; i++) {
-        if (todos[i].id === id) {
-          for (var key in updateData) {
-            todos[i][key] = updateData[key];
+    		// Generate an ID
+        var newId = ""; 
+        var charset = "0123456789";
+  
+          for (var i = 0; i < 6; i++) {
+           newId += charset.charAt(Math.floor(Math.random() * charset.length));
+      }
+  
+      // If an ID was actually given, find the item and update each property
+      if (id) {
+        for (var i = 0; i < todos.length; i++) {
+          if (todos[i].id === id) {
+            for (var key in updateData) {
+              todos[i][key] = updateData[key];
+            }
+            break;
           }
-          break;
         }
+  
+        localStorage[this._dbName] = JSON.stringify(data);
+        callback.call(this, todos);
+      } else {
+        // Assign an ID 
+        updateData.id = Date.now(); // Return the number of milliseconds since 1970/01/01 at 00:00
+        console.log(updateData.id);
+        
+        todos.push(updateData);
+        localStorage[this._dbName] = JSON.stringify(data);
+        callback.call(this, [updateData]);
       }
 
-      localStorage[this._dbName] = JSON.stringify(data);
-      callback.call(this, todos);
-    } else {
-      // Assign an ID
-      updateData.id = newId;
-      todos.push(updateData);
-      localStorage[this._dbName] = JSON.stringify(data);
-      callback.call(this, [updateData]);
-    }
   };
 
-  /**
+ 
+ /* 
    * @param {number} newId An optional param to enter an ID of an item to update
-   */
+  
   Store.prototype.createId = function(newId) {
     var newId = "";
     var charset = "0123456789";
@@ -121,7 +131,7 @@
     }
     return newId;
   };
-
+ */
   /**
    * Will remove an item from the Store based on its ID
    *
@@ -131,19 +141,12 @@
   Store.prototype.remove = function(id, callback) {
     var data = JSON.parse(localStorage[this._dbName]);
     var todos = data.todos;
-    var todoId;
 
     for (var i = 0; i < todos.length; i++) {
       if (todos[i].id == id) {
-        todoId = todos[i].id;
+      todos.splice(i, 1);
       }
-    }
-
- /*    for (var i = 0; i < todos.length; i++) {
-      if (todos[i].id == todoId) {
-        todos.splice(i, 1);
-      }
-    } */
+    } 
 
     localStorage[this._dbName] = JSON.stringify(data);
     callback.call(this, todos);

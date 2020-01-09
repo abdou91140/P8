@@ -139,11 +139,11 @@
       }
     }
 
-    for (var i = 0; i < todos.length; i++) {
+ /*    for (var i = 0; i < todos.length; i++) {
       if (todos[i].id == todoId) {
         todos.splice(i, 1);
       }
-    }
+    } */
 
     localStorage[this._dbName] = JSON.stringify(data);
     callback.call(this, todos);

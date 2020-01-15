@@ -106,7 +106,7 @@ describe("controller", function() {
 
     it("should show completed entries", function() {
       // TODO: write test
-      // teste le modèle et le visuel d'un item complété .
+      // test le modèle et le visuel d'un item complété .
       var todo = { title: "my todo", completed: true };
       setUpModel([todo]);
 
@@ -160,7 +160,7 @@ describe("controller", function() {
 
   it('should highlight "All" filter by default', function() {
     // TODO: write test
-    // teste le bouton "All" qui est activé par défault
+    // test le bouton "All" qui est activé par défault
     var todo = {};
     setUpModel([todo]);
 
@@ -171,7 +171,7 @@ describe("controller", function() {
 
   it('should highlight "Active" filter when switching to active view', function() {
     // TODO: write test
-    // teste le bouton "active" sur les todos activé.
+    // test le bouton "active" sur les todos activé.
     var todo = {};
     setUpModel([todo]);
 
@@ -222,7 +222,7 @@ describe("controller", function() {
   describe("new todo", function() {
     it("should add a new todo to the model", function() {
       // TODO: write test
-      // génération d'une nouvelle todo dans le model
+      // test l'ajout d'une nouvelle todo dans le modèle
       setUpModel([]);
 
       subject.setView("");
@@ -277,7 +277,7 @@ describe("controller", function() {
   describe("element removal", function() {
     it("should remove an entry from the model", function() {
       // TODO: write test
-      // retire une todo généré par le model
+      // test l'enlèvement d'une todo dans le modèle
       var todo = { id: 42, title: "my todo", completed: true };
       setUpModel([todo]);
 

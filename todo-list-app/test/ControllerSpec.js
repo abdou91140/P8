@@ -65,7 +65,7 @@ describe("controller", function() {
 
   it("should show entries on start-up", function() {
     // TODO: write test
-    // génération du modèle du template au démarage de l'application.
+    // test du modèle avec un item au démarage de l'application.
     var todo = {};
     setUpModel([todo]);
 
@@ -95,7 +95,7 @@ describe("controller", function() {
 
     it("should show active entries", function() {
       // TODO: write test
-      // génération du visuel d'un item active .
+      //test le modèle et le visuel d'un item active .
       var todo = { title: "my todo", completed: false };
       setUpModel([todo]);
 
@@ -106,7 +106,7 @@ describe("controller", function() {
 
     it("should show completed entries", function() {
       // TODO: write test
-      // génération du visuel d'un item complété .
+      // teste le modèle et le visuel d'un item complété .
       var todo = { title: "my todo", completed: true };
       setUpModel([todo]);
 
@@ -160,7 +160,7 @@ describe("controller", function() {
 
   it('should highlight "All" filter by default', function() {
     // TODO: write test
-    // filtre par défault toute les todos
+    // teste le bouton "All" qui est activé par défault
     var todo = {};
     setUpModel([todo]);
 
@@ -171,7 +171,7 @@ describe("controller", function() {
 
   it('should highlight "Active" filter when switching to active view', function() {
     // TODO: write test
-    // filtre les todos en active
+    // teste le bouton "active" sur les todos activé.
     var todo = {};
     setUpModel([todo]);
 
@@ -183,7 +183,7 @@ describe("controller", function() {
   describe("toggle all", function() {
     it("should toggle all todos to completed", function() {
       // TODO: write test
-      // passe toute les todos en completed.
+      // test le bouton "completed" sur les todos complété.
       var todos = [
         { id: 21, title: "my todo", completed: false },
         { id: 42, title: "another todo", completed: false }
@@ -208,7 +208,7 @@ describe("controller", function() {
 
     it("should update the view", function() {
       // TODO: write test
-      // affichage du compteur de todo
+      // test  la mise à jour du visuel du compteur de todos
       var todo = { title: "my todo", completed: false };
 
       setUpModel([todo]);
